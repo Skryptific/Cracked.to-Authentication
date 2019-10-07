@@ -13,6 +13,7 @@ namespace Cracked.to_Authentication
         {
             using (WebClient client = new WebClient())
             {
+                client.Proxy = null;
                 Uri uri = new Uri("https://cracked.to/auth.php");
                 NameValueCollection postData = new NameValueCollection() {
                     { "a", "auth"},
