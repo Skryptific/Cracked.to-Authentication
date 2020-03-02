@@ -9,13 +9,17 @@ Build solution, install Newtonsoft.Json and System.Management packages and impor
 ## Example Usage
 
 ```csharp
+using Cracked.to_Authentication;
+using Cracked.to_Authentication.Models;
+
 Console.WriteLine("Enter authentication key.");
 string authKey = Console.ReadLine();
 
 Auth auth = new Auth();
-bool isAuthenticated = auth.Authenticate(authKey, "-1");
 
-Console.WriteLine("Authenticated: " + isAuthenticated);
+LoginResponse loginResponse = auth.Authenticate(authKey, "-1");
+
+Console.WriteLine("Authenticated: " + loginResponse.isAuthenticated);
 Console.ReadLine();
 ```
 
