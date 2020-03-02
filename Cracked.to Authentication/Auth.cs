@@ -4,50 +4,39 @@ using System.Text;
 using System.Collections.Specialized;
 using Newtonsoft.Json;
 using System.Management;
+using Cracked.to_Authentication.Models;
+using Cracked.to_Authentication.Utils;
 
 namespace Cracked.to_Authentication
 {
     public class Auth
     {
-        public bool Authenticate(string authKey, string group) 
+        private readonly HardwareId _hardwareId = new HardwareId();
+        
+        public LoginResponse Authenticate(string authKey, string group)
         {
-            using (WebClient client = new WebClient())
+            var loginResponse = new LoginResponse
+            {
+                IsAuthenticated = false
+            };
+
+            using (var client = new WebClient())
             {
                 client.Proxy = null;
-                Uri uri = new Uri("https://cracked.to/auth.php");
-                NameValueCollection postData = new NameValueCollection() {
-                    { "a", "auth"},
-                    { "k", authKey },
-                    { "hwid", getHWID() }
+                var uri = new Uri("https://cracked.to/auth.php");
+                var postQuery = new NameValueCollection
+                {
+                    {"a", "auth"},
+                    {"k", authKey},
+                    {"hwid", _hardwareId.getHardwareId()}
                 };
 
-                string responseString = Encoding.UTF8.GetString(client.UploadValues(uri, postData));
-                if (!responseString.Contains("error"))
-                {
-                    Response response = JsonConvert.DeserializeObject<Response>(responseString);
-                    if (response.auth == true && (response.group == group || group == "-1")) // -1 stands for all groups.
-                    {
-                        return true;
-                    }
-                }
+                var responseString = Encoding.UTF8.GetString(client.UploadValues(uri, postQuery));
+
+                loginResponse = JsonConvert.DeserializeObject<LoginResponse>(responseString);
             }
 
-            return false;
-        }
-
-        private string getHWID()
-        {
-            ManagementObjectSearcher mbs = new ManagementObjectSearcher("Select ProcessorId From Win32_processor");
-            ManagementObjectCollection mbsList = mbs.Get();
-
-            string hwid = "";
-            foreach (ManagementObject mo in mbsList)
-            {
-                hwid = mo["ProcessorId"].ToString();
-                break;
-            }
-
-            return hwid;
+            return loginResponse;
         }
     }
 }
