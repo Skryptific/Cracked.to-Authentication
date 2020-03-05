@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cracked.to Authentication", "Cracked.to Authentication\Cracked.to Authentication.csproj", "{BD4DBDCA-7143-4896-84ED-502FE16F8886}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cracked.to Authentication", "Cracked.to Authentication\Cracked.to Authentication.csproj", "{BD4DBDCA-7143-4896-84ED-502FE16F8886}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cracked.to Example", "Cracked.to Example\Cracked.to Example.csproj", "{B79DF30D-B62C-43DF-B367-8CB4F84C5DFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BD4DBDCA-7143-4896-84ED-502FE16F8886}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD4DBDCA-7143-4896-84ED-502FE16F8886}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD4DBDCA-7143-4896-84ED-502FE16F8886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B79DF30D-B62C-43DF-B367-8CB4F84C5DFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B79DF30D-B62C-43DF-B367-8CB4F84C5DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B79DF30D-B62C-43DF-B367-8CB4F84C5DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B79DF30D-B62C-43DF-B367-8CB4F84C5DFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
